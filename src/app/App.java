@@ -35,6 +35,42 @@ public class App {
                     int idade = scanner.nextInt();
                     service.cadastrarUsuario(id, nome, cpf, idade);
                     break;
+                /* case 2:
+                    System.out.print("ID do usuário a ser editado: ");
+                    int idEdit = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("1 - Editar nome");
+                    System.out.println("2 - Editar CPF");
+                    System.out.println("3 - Editar idade");
+                    System.out.print("Escolha uma opção: ");
+                    int opcaoEdit = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opcaoEdit) {
+                        case 1:
+                            System.out.print("Novo nome: ");
+                            String novoNome = scanner.nextLine();
+                            service.editarUsuario(idEdit, "nome", novoNome);
+                            break;
+                        case 2:
+                            System.out.print("Novo CPF: ");
+                            String novoCpf = scanner.nextLine();
+                            service.editarUsuario(idEdit, "cpf", novoCpf);
+                            break;
+                        case 3:
+                            System.out.print("Nova idade: ");
+                            int novaIdade = scanner.nextInt();
+                            service.editarUsuario(idEdit, "idade", novaIdade);
+                            break;
+                        default:
+                            System.out.println("Opção inválida.");
+                    }
+                    break; */
+                case 4:
+                    System.out.println("Usuários cadastrados:");
+                    for (Usuario usuario : service.consultarTodosUsuarios()) {
+                        System.out.println(usuario);
+                    }
+                    break;
                 case 6:
                     System.out.println("Saindo...");
                     break;
