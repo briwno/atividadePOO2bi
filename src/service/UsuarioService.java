@@ -9,7 +9,7 @@ public class UsuarioService {
     private UsuarioRepository repository = new UsuarioRepository();
 
     private boolean validarCPF(String cpf) {
-        return cpf.matches("\\d{11}"); // Apenas números e exatamente 11 dígitos
+        return cpf.matches("\\d{11}"); 
     }
 
     public boolean cadastrarUsuario(int id, String nome, String cpf, int idade) {
@@ -38,5 +38,68 @@ public class UsuarioService {
         }
     }
 
-    
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> usuarios = repository.listarUsuarios();
+        if (usuarios.isEmpty()) {
+            System.out.println("⚠️ Nenhum usuário encontrado.");
+        } else {
+            System.out.println("Lista de Usuários:");
+            for (Usuario usuario : usuarios) {
+                System.out.println("---------ID: " + usuario.getId() + "------------");
+                System.out.println("Nome: " + usuario.getNome());
+                System.out.println("CPF: " + usuario.getCpf());
+                System.out.println("Idade: " + usuario.getIdade());
+                System.out.println("-------------------------");
+            }
+        }
+        return usuarios;
+    }
+
+    public boolean consultarUsuarioPorCpf(String cpf) {
+        if (!validarCPF(cpf)) {
+            System.out.println("⚠️ Erro: CPF inválido! Deve conter apenas 11 dígitos numéricos.");
+            return false;
+        }
+
+        Usuario usuario = repository.consultarUsuarioPorCpf(cpf);
+        if (usuario != null) {
+
+            System.out.println("Usuário com o cpf: '" + usuario.getCpf() + "' Encontrado com sucesso!");
+            System.out.println("ID: " + usuario.getId());
+            System.out.println("Nome: " + usuario.getNome());
+            System.out.println("Idade: " + usuario.getIdade());
+
+            return true;
+        } else {
+            System.out.println("⚠️ Usuário não encontrado.");
+            return false;
+        }
+    }
+
+    public boolean removerUsuario(int id) {
+        if (repository.removerUsuario(id)) {
+            System.out.println("✅ Usuário removido com sucesso!");
+            return true;
+        } else {
+            System.out.println("⚠️ Erro: Usuário não encontrado ou falha ao remover.");
+            return false;
+        }
+    }
+
+    public boolean editarUsuario(int id, String nome, String cpf, int idade) {
+        if (repository.editarUsuario(id, nome, cpf, idade)) {
+            System.out.println("✅ Usuário editado com sucesso!");
+            return true;
+        } else {
+            System.out.println("⚠️ Erro: Usuário não encontrado ou falha ao editar.");
+            return false;
+        }
+    }
+
+
+
+
+
+
+
 }

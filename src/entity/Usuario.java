@@ -46,9 +46,15 @@ public class Usuario {
         this.idade = idade;
     }
 
-    public String imprimir() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + '}';
-    }
+    @Override
+public String toString() {
+    return "Usuario{" +
+           "id=" + id +
+           ", nome='" + nome + '\'' +
+           ", cpf='" + cpf + '\'' +
+           ", idade=" + idade +
+           '}';
+}
     
     
 }
