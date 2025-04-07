@@ -45,12 +45,12 @@ public class UsuarioRepository {
 
     public boolean cadastrarUsuario(Usuario usuario) {
         if (idExiste(usuario.getId())) {
-            System.out.println("⚠️ Erro: ID já cadastrado!");
+            System.out.println(" Erro: ID já cadastrado!");
             return false;
         }
 
         if (cpfExiste(usuario.getCpf())) {
-            System.out.println("⚠️ Erro: CPF já cadastrado!");
+            System.out.println(" Erro: CPF já cadastrado!");
             return false;
         }
 
@@ -66,7 +66,7 @@ public class UsuarioRepository {
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("✅ Usuário cadastrado com sucesso!");
+                System.out.println(" Usuário cadastrado com sucesso!");
                 return true;
             }
         } catch (SQLException e) {
@@ -121,7 +121,7 @@ public class UsuarioRepository {
 
     public boolean removerUsuario(int id) {
         if (!idExiste(id)) {
-            System.out.println("⚠️ Erro: ID não encontrado!");
+            System.out.println(" Erro: ID não encontrado!");
             return false;
         }
 
@@ -138,12 +138,12 @@ public class UsuarioRepository {
 
     public boolean editarUsuario(int id, String nome, String cpf, int idade) {
         if (!idExiste(id)) {
-            System.out.println("⚠️ Erro: ID não encontrado!");
+            System.out.println(" Erro: ID não encontrado!");
             return false;
         }
 
         if (cpfExiste(cpf)) {
-            System.out.println("⚠️ Erro: CPF já cadastrado!");
+            System.out.println(" Erro: CPF já cadastrado!");
             return false;
         }
 
@@ -159,7 +159,7 @@ public class UsuarioRepository {
             int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("✅ Usuário editado com sucesso!");
+                System.out.println("Usuário editado com sucesso!");
                 return true;
             }
         } catch (SQLException e) {

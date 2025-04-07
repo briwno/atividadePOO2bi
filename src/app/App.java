@@ -37,19 +37,19 @@ public class App {
                     try {
                         System.out.print("ID: ");
                         int id = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
+                        scanner.nextLine();
                         System.out.print("Nome: ");
                         String nome = scanner.nextLine();
                         System.out.print("CPF: ");
                         String cpf = scanner.nextLine();
                         System.out.print("Idade: ");
                         int idade = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
+                        scanner.nextLine(); 
                         service.cadastrarUsuario(id, nome, cpf, idade);
                         System.out.println("Usuário cadastrado com sucesso!");
                     } catch (Exception e) {
                         System.out.println("Erro ao cadastrar usuário. Verifique os dados e tente novamente.");
-                        scanner.nextLine(); // Clear buffer in case of invalid input
+                        scanner.nextLine(); 
                     }
                     break;
                 case 2:
@@ -63,7 +63,7 @@ public class App {
                         String cpf = scanner.nextLine();
                         System.out.print("Nova Idade: ");
                         int idade = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
+                        scanner.nextLine();
                         service.editarUsuario(id, nome, cpf, idade);
                     } catch (Exception e) {
                         System.out.println("Erro ao editar usuário. Verifique os dados e tente novamente.");
@@ -73,7 +73,7 @@ public class App {
                     try {
                         System.out.print("Digite o ID do usuário a ser removido: ");
                         int id = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
+                        scanner.nextLine();
                         service.removerUsuario(id);
                     } catch (Exception e) {
                         System.out.println("Erro ao remover usuário. Verifique os dados e tente novamente.");
