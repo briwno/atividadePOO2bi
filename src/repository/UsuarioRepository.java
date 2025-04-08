@@ -25,6 +25,27 @@ public class UsuarioRepository {
         return false;
     }
 
+    public Usuario consultarUsuarioPorId(int id) {
+        String query = "SELECT * FROM usuario WHERE id = ?";
+        try (Connection conexao = Database.conectar();
+                PreparedStatement stmt = conexao.prepareStatement(query)) {
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("cpf"),
+                        rs.getInt("idade"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao consultar usuário: " + e.getMessage());
+        }
+        return null;
+    }
+
     // Método para verificar se o CPF existe no banco
     public boolean cpfExiste(String cpf) {
         String query = "SELECT COUNT(*) FROM usuario WHERE cpf = ?";
